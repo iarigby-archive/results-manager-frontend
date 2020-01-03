@@ -1,7 +1,23 @@
 body {
     font-family: sans-serif;
-    width: 70%;
+    width: 85%;
     margin: auto;
+}
+
+#files {
+    display: flex;
+}
+
+#diff {
+    width: 55%;
+}
+
+#answerContainer {
+    width: 45%;
+}
+
+#answer {
+    line-height: 3px !important;
 }
 
 .d2h-file-list-title {

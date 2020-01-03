@@ -16,8 +16,7 @@
 <body>
     <div id="messageContainer">
         <div id="message">
-            თქვენი ქულაა <span id="score"></span> <span id="maxscore"></span>-დან. <a href="#answerContainer">სწორი
-                ამოხსნის ნახვა.</a>
+            თქვენი ქულაა <span id="score"></span> <span id="maxscore"></span>-დან.
         </div>
     </div>
 
@@ -40,19 +39,24 @@
     </div>
 
     <div id="files">
-        <h2>ნაშრომი</h2>
-        <div id="fileDiff"></div>
+
+        <div id="diff">
+            <h2>ნაშრომი</h2>
+            <div id="diffElement"></div>
+        </div>
+        <div id="answerContainer">
+            <!-- class="line-numbers" -->
+            <h2>ამოხსნა</h2>
+            <pre><code id="answer" class="language-wasm">
+                        
+                </code>
+            </pre>
+        </div>
+
+
     </div>
 
-    <div id="diffElement"></div>
-    <div id="answerContainer">
-        <!-- class="line-numbers" -->
-        <h2>ამოხსნა</h2>
-        <pre><code id="answer" class="language-wasm">
-                    
-            </code>
-        </pre>
-    </div>
+
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/diff2html/2.12.1/diff2html.js"></script>
