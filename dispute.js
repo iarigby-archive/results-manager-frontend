@@ -67,7 +67,7 @@ const dispute = function(type) {
 const sendDispute = function(type) {
     const info = document.querySelector('textarea').value
     if (info.length > 0)
-        postData(`${url}/${studentId}/new`, { info: info, type: type, emailId: studentId })
+        postData(`${url}/${studentId}/new`, { info: info, type: type })
         .then(res => res.disputes.filter(e => e.status == 'unresolved'))
         .then(elem => addDisputeElement(elem))
         .then(clearElements)
