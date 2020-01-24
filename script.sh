@@ -1,1 +1,0 @@
-cat config.js button.js diff.js dispute.js api.js displayFile.js > index.js
