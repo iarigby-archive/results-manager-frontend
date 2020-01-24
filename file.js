@@ -1,11 +1,10 @@
 function getLanguage(fileName) {
-    console.log(fileName)
     if (fileName.includes('.scm'))
         return 'scheme'
     if (fileName.includes('.c'))
         return 'c'
     if (fileName.includes('.s'))
-        return 'asm'
+        return 'wasm'
 }
 
 function getFileDestination() {
@@ -13,29 +12,24 @@ function getFileDestination() {
 }
 function addFiles(files) {
     getFileDestination().innerHTML = ''
-    console.log(files)
     files
         .map(getFileElement)
         .forEach(addFile)
+
+    Prism.highlightAll()
 }
 
 /* DISGUSTING */
 function addFile(fileElement) {
-    getFileDestination().appendChild(fileElement)
+    getFileDestination().innerHTML = fileElement
 }
 
 function getFileElement(file) {
     const language = getLanguage(file.name)
-    const d = document.createElement('div')
-    d.id =file.name
-    const header = document.createElement('h1')
-    header.innerText = file.name
-    d.appendChild(header) 
-    const p = document.createElement('pre')
-    const c = document.createElement('code')
-    c.class = `language-${language}`
-    c.innerText = file.contents
-    p.appendChild(c)
-    d.appendChild(p)
-    return d
+    console.log(language)
+    return `<div id=${file.name}>
+        <h1>${file.name}</h1>
+        <pre class="language-${language}"><code>${file.contents}
+        </code></pre>
+    </div>`
 }

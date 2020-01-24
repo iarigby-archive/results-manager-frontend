@@ -1,4 +1,4 @@
-const main = function () {
+function main() {
     const studentId = getId()
     if (studentId.length > 0) {
         if (studentId == "test")

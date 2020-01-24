@@ -32,8 +32,10 @@ function getTasks(exam, id) {
 const addError = (exam) =>
     document.getElementById(`${exam}-files`).innerHTML = 'ფაილი ვერ მოიძებნა'
 
-const addLinks = (id, exam, tasks) =>
+function addLinks (id, exam, tasks) {
     document.getElementById(`${exam}-files`).innerHTML = getLinks(id, exam, tasks)
+    return tasks
+}
 
 const getLinks = (id, exam, tasks) =>
     tasks.map(task => getLink(id, exam, task)).join('\n')
@@ -46,7 +48,6 @@ const getLink = (id, exam, task) =>
 function getTaskData(id, exam, task) {
     // const path = window.location.pathname
     // const id = path.substring(path.lastIndexOf('/'), path.length)
-    console.log(id)
     return fetch(`${backend}/exams/paradigms/${exam}/results/${id}/${task}`)
         .then(response => response.json())
 }
