@@ -1,57 +1,109 @@
 <!DOCTYPE html>
-
 <head>
     <!-- Stylesheet -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/github.min.css" />
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/diff2html/2.12.1/diff2html.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/diff2html/2.12.1/diff2html.css" />
     <link rel="stylesheet" type="text/css" href="style.css" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/themes/prism.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/themes/prism.min.css"
+        rel="stylesheet" />
     <!-- 
         https://cdnjs.com/libraries/prism
      -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/line-numbers/prism-line-numbers.min.css"
+        rel="stylesheet" />
 
 </head>
 
 <body>
-    <div id="messageContainer">
+    <!-- <div id="messageContainer">
         <div id="message">
             თქვენი ქულაა <span id="score"></span> <span id="maxscore"></span>-დან.
         </div>
+    </div> -->
+
+    <div id="results-list">
+        <h3 id="emailId"></h3>
+        <div id="container">
+            ჯერ-ჯერობით ვარიანტების მიხედვით დალაგება არ მუშაობს.
+
+            გაიხსენეთ რომელი ამოცანა წერეთ და მის ნახვას დააჭირეთ.
+            თუ ფაილს ვერ პოულობთ, შანსია რომ დირექტორიის სტრუქტურა
+            დაარღვიეთ და ამის გამო ავტომატურად ვერ იპოვა პროგრამამ.
+            
+            მომწერეთ მეილზე სათაურით
+            'პარადიგმები: ფინალური პრობლემა ნაშრომზე'
+            ან
+            'პარადიგმები: მეოთხე შუალედური პრობლემა ნაშრომზე'
+            ან
+            'პარადიგმები: მესამე შუალედური პრობლემა ნაშრომზე'
+            და დეტალები მეილში (დაიკარგა/ფაილი ცარიელია ა.შ)
+            <br>
+            სხვა ნებისმიერ საკითხზე გთხოვთ ჯერ არ მომწეროთ, იმიტომ რომ 
+            შეიძლება ამ გვერდს დავამატო რამდენიმე ფუნქცია.
+        </div>
+        <h2>
+            მესამე
+        </h2>
+        <div id="midterm3-files">
+
+        </div>
+        <h2>
+            მეოთხე შუალედური
+        </h2>
+        <div id="midterm4-files">
+
+        </div>
+        <h2>
+            ფინალური
+        </h2>
+        <div id="final-files">
+
+        </div>
+
     </div>
+    <div id="task-files">
+        <div id="student-files" class="container">
 
-    <div class="big-container">
-        <h2>გასაჩივრება/კომენტარი</h2>
-        <div class="container">
-            <button onclick=disputeCorrectness()>გასწორებაში შეცდომაა</button> ჩემი ნაწერი იმავეს აკეთებს, რაც ამოხსნაში წერია, ოღონდ სხვანაირად. ეს შეგიძლიათ გამოიყენოთ უბრალოდ კომენტარის გასაკეთებლადაც
-            <div id="disputeCorrectness"></div>
         </div>
 
-        <div class="container">
-            <button onclick=disputeSolution()>ამოხსნაში შეცდომაა</button> და ამის გამო ჩემი სწორი ნაწერი შეცდომადაა ჩათვლილი
-
-            <div id="disputeSolution"></div>
-        </div>
+        <!--
         <div class="big-container">
-            <h3>არსებული გასაჩივრებები</h3>
-            <div id="disputes"></div>
+            <h2>გასაჩივრება/კომენტარი</h2>
+            <div class="container disputeField">
+                <button onclick=disputeCorrectness()>გასწორებაში შეცდომაა</button> ჩემი ნაწერი იმავეს აკეთებს, რაც ამოხსნაში
+                წერია, ოღონდ სხვანაირად. ეს შეგიძლიათ გამოიყენოთ უბრალოდ კომენტარის გასაკეთებლადაც
+                <div id="disputeCorrectness"></div>
+            </div>
+    
+            <div class="container disputeField">
+                <button onclick=disputeSolution()>ამოხსნაში შეცდომაა</button> და ამის გამო ჩემი სწორი ნაწერი შეცდომადაა
+                ჩათვლილი
+    
+                <div id="disputeSolution"></div>
+            </div>
+            <div class="big-container">
+                <h3>არსებული გასაჩივრებები</h3>
+                <div id="disputes"></div>
+            </div>
         </div>
-    </div>
-
-    <div id="files">
-
         <div id="diff">
             <h2>ნაშრომი</h2>
             <div id="diffElement"></div>
         </div>
         <div id="answerContainer">
-            <!-- class="line-numbers" -->
             <h2>ამოხსნა</h2>
-            <pre><code id="answer" class="language-wasm">
-                        
+            <pre><code id="answer" class="language-c">
+                        int a = 0;
+                        int b = 3;
                 </code>
             </pre>
         </div>
+    -->
+
+    </div>
+
 
 
     </div>
@@ -60,7 +112,8 @@
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/diff2html/2.12.1/diff2html.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/diff2html/2.12.1/diff2html-ui.js"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/diff2html/2.12.1/diff2html-ui.js"></script>
     <div id="myscripts">
         <script src="config.js"></script>
         <script src="button.js"></script>
@@ -68,11 +121,14 @@
         <script src="dispute.js"></script>
         <script src="api.js"></script>
         <script src="displayFile.js"></script>
+        <script src="test.js"></script>
         <script src="main.js"></script>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-core.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/autoloader/prism-autoloader.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/line-numbers/prism-line-numbers.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/line-numbers/prism-line-numbers.js"></script>
 
 </body>
 

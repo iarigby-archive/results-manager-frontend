@@ -1,6 +1,10 @@
 body {
     font-family: sans-serif;
-    width: 85%;
+    width: 1000px;
+    margin: auto;
+}
+
+#student-files {
     margin: auto;
 }
 

@@ -1,7 +1,15 @@
-const main = function() {
+const main = function () {
     const studentId = getId()
-    updateData(studentId)
-        .then(updateDisputes)
+    if (studentId.length > 0) {
+        if (studentId == "test")
+            test()
+        else
+            updateData(studentId)
+                .then(updateDisputes)
+    }
+
 }
+
+var files = {}
 
 document.addEventListener("DOMContentLoaded", main)

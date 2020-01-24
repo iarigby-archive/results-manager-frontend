@@ -39,6 +39,8 @@ const disputeInput = (type) =>
     <button onclick=sendDispute('${type}')>გაგზავნა</button>
     </div></div>`
 
+// TODO better to include in 
+// config file or sth
 const disputeCorrectness = () => dispute('Correctness')
 
 const disputeSolution = () => dispute('Solution')
