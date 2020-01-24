@@ -9,7 +9,19 @@ const main = function () {
     }
 
 }
-
+ // TODO 
 var files = {}
+
+function updateData(id) {
+    ['midterm3', 'midterm4', 'final']
+        .forEach(exam =>
+            getTasks(exam, id)
+                .then(tasks => addLinks(id, exam, tasks))
+                .catch(e => {
+                    console.log(e)
+                    addError(exam)
+                }))
+}
+
 
 document.addEventListener("DOMContentLoaded", main)

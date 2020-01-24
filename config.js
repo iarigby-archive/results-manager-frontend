@@ -1,11 +1,14 @@
 let backend = 'http://localhost:3000'
 
-function getPath() {
-    window.location.href.toString()
+const getPath = function () {
+   
 }
     // const backend = 'http://116.203.187.241:3000'
 const getId = function() {
-    const path = getPath()
+    const path = window.location.href.toString()
+    // !!!!!!!!!!!!!!
+    if (path.includes('116.203.187.241'))
+      backend = 'http://116.203.187.241:3000'  
     const header = path.indexOf('#')
     const pos = header > 0 ? header : path.length
     const id = path.indexOf('?id=')
@@ -13,5 +16,3 @@ const getId = function() {
 }
 
 const studentId = getId()
-if (getPath().includes('116.203.187.241'))
-    backend = 'http://116.203.187.241:3000'  
