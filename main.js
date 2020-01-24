@@ -10,15 +10,18 @@ function main() {
 
 }
  // TODO 
-var files = {}
+let data = {}
 
 function updateData(id) {
     ['midterm3', 'midterm4', 'final']
         .forEach(exam =>
-            getTasks(exam, id)
-                .then(tasks => addLinks(id, exam, tasks))
+            getExamData(exam, id)
+                .then(exam => {
+                    data[exam] = exam
+                    return exam
+                })
+                .then(exam => displayExamData(exam))
                 .catch(e => {
-                    console.log(e)
                     addError(exam)
                 }))
 }
