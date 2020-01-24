@@ -4,7 +4,7 @@ function getLanguage(fileName) {
     if (fileName.includes('.c'))
         return 'c'
     if (fileName.includes('.s'))
-        return 'wasm'
+        return 'asm'
 }
 
 function getFileDestination() {
@@ -21,15 +21,25 @@ function addFiles(files) {
 
 /* DISGUSTING */
 function addFile(fileElement) {
-    getFileDestination().innerHTML = fileElement
+    getFileDestination().appendChild(fileElement)
 }
 
 function getFileElement(file) {
     const language = getLanguage(file.name)
-    console.log(language)
-    return `<div id=${file.name}>
-        <h1>${file.name}</h1>
-        <pre class="language-${language}"><code>${file.contents}
-        </code></pre>
-    </div>`
+    const d = document.createElement('div')
+    d.id = file.name
+    const header = document.createElement('h1')
+    header.innerText = file.name
+    d.appendChild(header)
+    const p = document.createElement('pre')
+    p.className = `language-${language}`
+    file.contents.split('\n')
+        .forEach(line => {
+            const c = document.createElement('code')
+            c.innerText = line
+            p.appendChild(c)
+            p.appendChild(document.createElement('br'))
+        })
+    d.appendChild(p)
+    return d
 }
