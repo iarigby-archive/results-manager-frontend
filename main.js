@@ -14,18 +14,21 @@ let data = {}
 
 function updateData(id) {
     getSubjectExams('paradigms')
-        .then(res =>
-            res.exams.forEach(exam =>
+        .then(res => res.exams)
+        .then(exams => {
+            createExamElements(exams)
+            exams.forEach(exam => {
                 getExamData(exam, id)
                     .then(exam => {
-                        data[exam] = exam
+                        data[exam.name] = exam
                         return exam
                     })
                     .then(exam => displayExamData(exam))
                     .catch(e => {
                         addError(exam)
-                    }))
-        )
+                    })
+            })
+        })
 }
 
 

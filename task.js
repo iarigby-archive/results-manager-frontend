@@ -9,7 +9,7 @@ function displayTaskData(exam, task) {
 }
 
 function addTaskLinks(exam) {
-    const links = getTaskLinks(exam, exam.tasks)
+    const links = getTaskLinks(exam.name, exam.tasks)
     document.getElementById(`${exam.name}-files`).innerHTML = links
     return exam
 }
@@ -34,10 +34,30 @@ const getTaskLinks = (exam, tasks) =>
     tasks.map(task => getTaskLink(exam, task)).join('\n')
 
 const getTaskLink = (exam, task) =>
-    `<div> <button onclick="displayTaskData('${exam.name}','${task}')"> 
-        ფაილის ნახვა
-    </button> ${task} </div>`
+    `<div> 
+    <button onclick="displayTaskData('${exam}','${task}')"> 
+        ფაილების ნახვა
+    </button> 
+    
+    <button onclick="displayUploadElement('${exam}','${task}')">
+         ცვლილების ატვირთვა
+    </button>
+    ${task} 
+    
+    </div>
 
+    <div id='upload_${exam}_${task}'>
+    </div>
+    `
+function displayUploadElement(exam, task) {
+    const elem = document.getElementById(`upload_${exam}_${task}`)
+    elem.innerHTML = getUploadElement(exam, task) 
+}
+
+function removeUploadElement(exam, task) {
+    const elem = document.getElementById(`upload_${exam}_${task}`)
+    elem.innerHTML = '' 
+}
 function getTaskData(exam) {
     // const path = window.location.pathname
     // const id = path.substring(path.lastIndexOf('/'), path.length)

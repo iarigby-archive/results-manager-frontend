@@ -16,6 +16,20 @@ function postData(url = '', data = {}) {
         .then(response => response.json()) // parses JSON response into native JavaScript objects
 }
 
+function studentEndpoint(exam, id) {
+    return `${backend}/exams/paradigms/${exam}/${id}`
+}
+
+function fileChangeEndpoint(exam, id, task) {
+    return `${studentEndpoint(exam, id)}/${task}/change`
+}
+function sendFile(exam, fileData) {
+    const opts = data[exam]
+    const path = fileChangeEndpoint(opts.name, opts.id, fileData.task)
+    postData(path, fileData)
+    .then(a => console.log(a))
+
+}
 function getSubjectExams(subject) {
     const path = `${backend}/exams/${subject}`
     return fetch(path)
@@ -23,7 +37,7 @@ function getSubjectExams(subject) {
 }
 
 function getExamData(exam, id) {
-    const path = `${backend}/exams/paradigms/${exam}/${id}`
+    const path = studentEndpoint(exam, id)
     return fetch(path)
         .then(response => {
             if (response.status == 404)
