@@ -9,21 +9,23 @@ function main() {
     }
 
 }
- // TODO 
+// TODO 
 let data = {}
 
 function updateData(id) {
-    ['midterm3', 'midterm4', 'final']
-        .forEach(exam =>
-            getExamData(exam, id)
-                .then(exam => {
-                    data[exam] = exam
-                    return exam
-                })
-                .then(exam => displayExamData(exam))
-                .catch(e => {
-                    addError(exam)
-                }))
+    getSubjectExams('paradigms')
+        .then(res =>
+            res.exams.forEach(exam =>
+                getExamData(exam, id)
+                    .then(exam => {
+                        data[exam] = exam
+                        return exam
+                    })
+                    .then(exam => displayExamData(exam))
+                    .catch(e => {
+                        addError(exam)
+                    }))
+        )
 }
 
 

@@ -16,6 +16,12 @@ function postData(url = '', data = {}) {
         .then(response => response.json()) // parses JSON response into native JavaScript objects
 }
 
+function getSubjectExams(subject) {
+    const path = `${backend}/exams/${subject}`
+    return fetch(path)
+        .then(response => response.json())
+}
+
 function getExamData(exam, id) {
     const path = `${backend}/exams/paradigms/${exam}/${id}`
     return fetch(path)
@@ -25,7 +31,7 @@ function getExamData(exam, id) {
             // :((
             return response.json()
         })
-        // .then(data => data.tasks)
+    // .then(data => data.tasks)
 }
 
 
