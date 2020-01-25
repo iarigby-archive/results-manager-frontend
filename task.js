@@ -34,7 +34,7 @@ const getTaskLinks = (exam, tasks) =>
     tasks.map(task => getTaskLink(exam, task)).join('\n')
 
 const getTaskLink = (exam, task) =>
-    `<div> <button onclick="displayTaskData('${exam}','${task}')"> 
+    `<div> <button onclick="displayTaskData('${exam.name}','${task}')"> 
         ფაილის ნახვა
     </button> ${task} </div>`
 
