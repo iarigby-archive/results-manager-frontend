@@ -26,8 +26,9 @@ const uploadFile = (exam, task) => {
     readFile(uploaderElement)
         .then(result => {
             removeUploadElement(exam, task)
-            sendFile(exam,
+            api.sendFile(exam,
                 {
+                    task: task,
                     comments: comments,
                     name: fileName,
                     contents: result

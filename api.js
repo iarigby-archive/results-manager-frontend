@@ -42,7 +42,7 @@ const Api = class {
 
     sendFile(exam, fileData) {
         const opts = data[exam]
-        const path = fileChangeEndpoint(opts.name, fileData.task)
+        const path = this.fileChangeEndpoint(opts.name, fileData.task)
         postData(path, fileData)
             .then(a => console.log(a))
 

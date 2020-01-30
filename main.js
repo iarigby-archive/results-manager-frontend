@@ -1,6 +1,9 @@
 // TODO 
 let data = {}
-
+// got tired of passing them around, needs bigger refactor
+const studentId = getParameter("id")
+const subject = getParameter("subject")
+const api = new Api(subject, studentId)
 function updateData(api) {
     api.getSubjectExams()
         .then(res => res.exams)
@@ -8,15 +11,12 @@ function updateData(api) {
 }
 
 function main() {
-    const studentId = getParameter("id")
-    const subject = getParameter("subject")
-    const api = new Api(subject, studentId)
     if (studentId) {
         if (studentId == "test")
             test()
         else
             updateData(api)
-                // .then(updateDisputes)
+        // .then(updateDisputes)
     } else {
         if (subject) {
             // display help message for id
