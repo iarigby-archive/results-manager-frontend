@@ -1,19 +1,12 @@
 <!DOCTYPE html>
+
 <head>
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/github.min.css" />
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/github.min.css" />
     <link rel="stylesheet" type="text/css"
-        href="https://cdnjs.cloudflare.com/ajax/libs/diff2html/2.12.1/diff2html.css" />
+        href="https://cdnjs.cloudflare.com/ajax/libs/diff2html/2.12.1/diff2html.css" /> -->
     <link rel="stylesheet" type="text/css" href="style.css" />
-    <link rel="stylesheet" type="text/css" href="libs/prism.css"/>
-    <!-- 
-        <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/line-numbers/prism-line-numbers.min.css"
-        rel="stylesheet" />
-         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/themes/prism.min.css"
-        rel="stylesheet" />
-     -->
-    
+    <link rel="stylesheet" type="text/css" href="libs/prism.css" />
 
 </head>
 
@@ -26,54 +19,12 @@
 
     <div id="results-list">
         <h3 id="emailId"></h3>
-        <div id="container">
-            ჯერ-ჯერობით ვარიანტების მიხედვით დალაგება არ მუშაობს.
-
-            გაიხსენეთ რომელი ამოცანა წერეთ და მის ნახვას დააჭირეთ.
-            თუ ფაილს ვერ პოულობთ, შანსია რომ დირექტორიის სტრუქტურა
-            დაარღვიეთ და ამის გამო ავტომატურად ვერ იპოვა პროგრამამ.
-            
-            მომწერეთ <strong>ახალი</strong> მეილზე სათაურით (<strong>სათაური აუცილებლად უნდა 
-                იყოს ზუსტად ასეთი</strong>, ძალიან ბევრი მეილია და სათაურით გავფილტრავ
-            )
-            'პარადიგმები: ფინალური პრობლემა ნაშრომზე'
-            ან
-            'პარადიგმები: მეოთხე შუალედური პრობლემა ნაშრომზე'
-            ან
-            'პარადიგმები: მესამე შუალედური პრობლემა ნაშრომზე'
-            და დეტალები მეილში (დაიკარგა/ფაილი ცარიელია ა.შ)
-            <br>   
-            <strong>დაკარგულ ნაშრომზე მოწერის დედლაინია 
-                ორშაბათი 10:00, 27 იანვარი</strong>
-
-            <br>
-            სხვა ნებისმიერ საკითხზე გთხოვთ ჯერ არ მომწეროთ, იმიტომ რომ 
-            შეიძლება ამ გვერდს დავამატო რამდენიმე ფუნქცია (მაგ. ერთი ხაზი
-            თუ გაქვთ არასწორად, ახალი ფაილი ატვირთოთ)
+        <div id="message" class="container">
 
         </div>
         <div id="exams">
 
         </div>
-        <!-- <h2>
-            მესამე
-        </h2>
-        <div id="midterm3-files">
-
-        </div>
-        <h2>
-            მეოთხე შუალედური
-        </h2>
-        <div id="midterm4-files">
-
-        </div>
-        <h2>
-            ფინალური
-        </h2>
-        <div id="final-files">
-
-        </div> -->
-
     </div>
     <div id="">
         <!-- <input type="file"/> -->
@@ -107,25 +58,12 @@
             <h2>ნაშრომი</h2>
             <div id="diffElement"></div>
         </div>
-        <div id="answerContainer">
-            <h2>ამოხსნა</h2>
-            <pre><code id="answer" class="language-c">
-                        int a = 0;
-                        int b = 3;
-                </code>
-            </pre>
-        </div>
+        
     -->
 
     </div>
-
-
-
     </div>
-
-
-
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
     <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/diff2html/2.12.1/diff2html.js"></script> -->
     <!-- <script type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/diff2html/2.12.1/diff2html-ui.js"></script> -->
@@ -140,11 +78,6 @@
         <script src="exam.js"></script>
         <script src="main.js"></script>
     </div>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-core.min.js"></script>
-    <script
-        src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/autoloader/prism-autoloader.min.js"></script>
-    <script
-        src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/line-numbers/prism-line-numbers.js"></script> -->
     <script src="libs/prism.js"></script>
 </body>
 

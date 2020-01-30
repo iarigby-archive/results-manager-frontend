@@ -6,6 +6,7 @@ function displayExamData(exam) {
 
 function createExamElements(exams) {
     getExamsElement().innerHTML = exams.map(getExamElement).join('\n')
+    return exams
 }
 
 function getExamElement(examName) {

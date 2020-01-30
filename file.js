@@ -5,6 +5,8 @@ function getLanguage(fileName) {
         return 'c'
     if (fileName.includes('.s'))
         return 'asm'
+    if (fileName.includes('.java'))
+        return 'java'
 }
 
 function getFileDestination() {
@@ -19,7 +21,6 @@ function addFiles(files) {
     Prism.highlightAll()
 }
 
-/* DISGUSTING */
 function addFile(fileElement) {
     getFileDestination().appendChild(fileElement)
 }
@@ -32,7 +33,7 @@ function getFileElement(file) {
     header.innerText = file.name
     d.appendChild(header)
     const p = document.createElement('pre')
-    p.className = `language-${language}`
+    p.className = `language-${language} line-numbers`
     file.contents.split('\n')
         .forEach(line => {
             const c = document.createElement('code')
