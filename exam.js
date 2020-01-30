@@ -1,3 +1,23 @@
+function setUpExams(exams, api) {
+    // this line wouldn't exist if I used appendChild
+    createExamElements(exams)
+    exams.forEach(exam => setupExam(exam, api))
+    return exams
+}
+
+function saveExamData(exam) {
+    // :( saving 
+    data[exam.name] = exam
+    return exam
+}
+
+function setupExam(exam, api) {
+    api.getExamData(exam)
+        .then(exam => saveExamData(exam))
+        .then(exam => displayExamData(exam))
+        .catch(e => addError(exam))
+}
+
 function displayExamData(exam) {
     addTaskLinks(exam)
     addExamScore(exam)
@@ -26,7 +46,7 @@ function addExamScore(exam) {
 }
 
 function addError(exam) {
-    document.getElementById(`${exam}-files`).innerHTML = 'ფაილი ვერ მოიძებნა'
+    document.getElementById(`${exam}-files`).innerHTML = 'გამოცდის ნაშრომი ვერ მოიძებნა'
     // რამე ღილაკის დამატება, დედას გეფიცები, დესკტოპზე დავტოვე, მართლა
 }
 

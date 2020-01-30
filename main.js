@@ -1,41 +1,38 @@
+// TODO 
+let data = {}
+
+function updateData(api) {
+    api.getSubjectExams()
+        .then(res => res.exams)
+        .then(exams => setUpExams(exams, api))
+}
+
 function main() {
-    const studentId = getId()
-    if (studentId.length > 0) {
+    const studentId = getParameter("id")
+    const subject = getParameter("subject")
+    const api = new Api(subject, studentId)
+    if (studentId) {
         if (studentId == "test")
             test()
         else
-            updateData(studentId)
-                .then(updateDisputes)
+            updateData(api)
+                // .then(updateDisputes)
+    } else {
+        if (subject) {
+            // display help message for id
+            // on backend check if that id has
+            // any tasks
+            // say that email has been sent and they should recheck
+        } else {
+            // display generic welcome message
+        }
     }
 
 }
 
-// TODO 
-let data = {}
-
-function updateData(id) {
-    getSubjectExams('paradigms')
-        .then(res => res.exams)
-        .then(exams => setUpExams(exams, id))
-}
-
-function setUpExams(exams, id) {
-    // this line wouldn't exist if I used appendChild
-    createExamElements(exams)
-    exams.forEach(exam => setupExam(exam, id))
-    return exams
-}
-function saveExamData(exam) {
-    // :( saving 
-    data[exam.name] = exam
-    return exam
-}
-
-function setupExam(exam, id) {
-    getExamData(exam, id)
-    .then(exam => saveExamData(exam))
-    .then(exam => displayExamData(exam))
-    .catch(e => addError(exam))
+function getParameter(p) {
+    const u = new URL(window.location)
+    return u.searchParams.get(p)
 }
 
 document.addEventListener("DOMContentLoaded", main)
