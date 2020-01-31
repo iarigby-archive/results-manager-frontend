@@ -29,7 +29,7 @@ function getFileElement(file) {
     const language = getLanguage(file.name)
     const d = document.createElement('div')
     d.id = file.name
-    const header = document.createElement('h1')
+    const header = document.createElement('h4')
     header.innerText = file.name
     d.appendChild(header)
     const p = document.createElement('pre')

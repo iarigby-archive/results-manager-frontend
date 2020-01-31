@@ -1,7 +1,7 @@
 function setUpExams(exams, api) {
     // this line wouldn't exist if I used appendChild
     createExamElements(exams)
-    exams.forEach(exam => setupExam(exam, api))
+    exams.forEach(exam => setupExam(exam.name, api))
     return exams
 }
 
@@ -29,10 +29,10 @@ function createExamElements(exams) {
     return exams
 }
 
-function getExamElement(examName) {
-    return `<div id="${examName}-data">
-     <h2>${examName}</h2>
-     <div id="${examName}-files"></div>
+function getExamElement(exam) {
+    return `<div id="${exam.name}-data">
+     <h3>${exam.name_ge}</h3>
+     <div id="${exam.name}-files"></div>
     </div>`
 }
 

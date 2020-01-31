@@ -29,7 +29,6 @@ const Api = class {
             referrerPolicy: 'no-referrer', // no-referrer, *client
             body: JSON.stringify(data) // body data type must match "Content-Type" header
         })
-            .then(response => response.json()) // parses JSON response into native JavaScript objects
     }
 
     getStudentEndpoint(exam) {
@@ -44,9 +43,29 @@ const Api = class {
         const opts = data[exam]
         const path = this.fileChangeEndpoint(opts.name, fileData.task)
         postData(path, fileData)
+            .then(response => response.json())
             .then(a => console.log(a))
 
     }
+
+    getDisputeEndpoint() {
+        return `${this.backendURL}/disputes/${this.id}`
+    }
+
+    createDispute(dispute) {
+        return this.postData(this.getDisputeEndpoint(), dispute)
+            .then(response => response.json())
+    }
+    getDisputes() {
+        return fetch(this.getDisputeEndpoint())
+            .then(response => response.json())
+    }
+
+    resolveDispute(disputeId) {
+        return fetch(`${this.getDisputeEndpoint()}/${disputeId}/resolve`)
+            .then(response => response.json())
+    }
+
     getSubjectExams() {
         const path = `${this.backendURL}/exams/${this.subject}`
         return fetch(path)

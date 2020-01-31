@@ -11,14 +11,15 @@
 </head>
 
 <body>
-    <!-- <div id="messageContainer">
-        <div id="message">
-            თქვენი ქულაა <span id="score"></span> <span id="maxscore"></span>-დან.
+    <div id="student-data">
+        <h1 id="student-id"></h1>
+        <div class="big-container">
+            <h3>გასაჩივრებები</h3>
+            <div id="disputes"></div>
         </div>
-    </div> -->
-
+    </div>
     <div id="results-list">
-        <h3 id="emailId"></h3>
+        <h2 id="results-list-header"></h2>
         <div id="message" class="container">
 
         </div>
@@ -27,40 +28,11 @@
         </div>
     </div>
     <div id="">
-        <!-- <input type="file"/> -->
     </div>
     <div id="task-files">
         <div id="student-files" class="container">
 
         </div>
-
-        <!--
-        <div class="big-container">
-            <h2>გასაჩივრება/კომენტარი</h2>
-            <div class="container disputeField">
-                <button onclick=disputeCorrectness()>გასწორებაში შეცდომაა</button> ჩემი ნაწერი იმავეს აკეთებს, რაც ამოხსნაში
-                წერია, ოღონდ სხვანაირად. ეს შეგიძლიათ გამოიყენოთ უბრალოდ კომენტარის გასაკეთებლადაც
-                <div id="disputeCorrectness"></div>
-            </div>
-    
-            <div class="container disputeField">
-                <button onclick=disputeSolution()>ამოხსნაში შეცდომაა</button> და ამის გამო ჩემი სწორი ნაწერი შეცდომადაა
-                ჩათვლილი
-    
-                <div id="disputeSolution"></div>
-            </div>
-            <div class="big-container">
-                <h3>არსებული გასაჩივრებები</h3>
-                <div id="disputes"></div>
-            </div>
-        </div>
-        <div id="diff">
-            <h2>ნაშრომი</h2>
-            <div id="diffElement"></div>
-        </div>
-        
-    -->
-
     </div>
     </div>
     <!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
@@ -68,7 +40,7 @@
     <!-- <script type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/diff2html/2.12.1/diff2html-ui.js"></script> -->
     <div id="myscripts">
-        <script src="config.js"></script>
+        <!-- <script src="config.js"></script> -->
         <script src="dispute.js"></script>
         <script src="api.js"></script>
         <script src="file.js"></script>

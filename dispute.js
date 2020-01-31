@@ -1,42 +1,48 @@
-const url = `${backend}/midterms/4/disputes`
+// const url = `${backend}/midterms/4/disputes`
 
-const disputeRequest = function(path) {
-    const subPath = path || ''
-    const fullUrl = `${url}/${studentId}/${subPath}`
-    return fetch(fullUrl)
-        .then(response => response.json())
-        .then(res => res.disputes.filter(e => e.status == 'unresolved'))
-        .catch(err => console.log(err))
+const updateDisputes = async function (disputes) {
+    removeTaskDetails()
+    addDisputesElement(disputes.filter(d => d.status != 'resolved'))
 }
 
-const updateDisputes = async function() {
-    const disputes = await disputeRequest()
-    addDisputeElement(disputes)
+const getDisputeButton = function (exam, task) {
+    // TODO if
+    return `<button onclick="addDisputeInput('${exam}', '${task}')">გასაჩივრება</button></span>`
 }
-
-const addDisputeElement = function(disputes) {
+const addDisputesElement = function (disputes) {
     const elem = (disputes.length == 0) ?
         'თქვენ გასაჩივრებები არ გაქვთ' :
-        disputes.map(dispute =>
-            `<div class="dispute">
-            ${dispute.info}
-            <button onclick=resolveDispute(${dispute.id})>დახურვა</button>
-        </div>`).join('\n')
+        disputes
+            .map(getDisputeElement)
+            .join('\n')
     document.getElementById('disputes').innerHTML = elem
 }
-const resolveDispute = function(id) {
-    disputeRequest(`resolve/${id}`)
-        .then(addDisputeElement)
+
+const getDisputeElement = (dispute) =>
+    `<div class="dispute">
+    ${dispute.info}
+    <button onclick="resolveDispute('${dispute.disputeId}')">დახურვა</button>
+    </div>`
+const resolveDispute = function (id) {
+    api.resolveDispute(id)
+        .then(res => res.disputes)
+        .then(updateDisputes)
 }
 
-const disputeInput = (type) =>
+const addDisputeInput = (exam, task) => {
+    const elem = document.getElementById(`upload_${exam}_${task}`)
+    elem.innerHTML = disputeInput(exam, task)
+
+}
+
+const disputeInput = (exam, task) =>
     `<div class="big-container"><p>
     დასაწყისში მიუთითეთ ხაზის ნომრები, რომელსაც გულისხმობთ. 
     გთხოვთ, რომ გასაჩივრებამდე 1-2 კურსელთან გაიაროთ კონსულტაცია 
     და დარწმუნდეთ, რომ ჰენდაუთებიდან რამე ინფორმაცია არ გაქვთ გამოპარული.
     </p>
     <div class="container"><textarea id="dispute"></textarea>
-    <button onclick=sendDispute('${type}')>გაგზავნა</button>
+    <button onclick="sendDispute('${exam}', '${task}')">გაგზავნა</button>
     </div></div>`
 
 // TODO better to include in 
@@ -61,18 +67,22 @@ const clearElements = () => [`Solution`, `Correctness`].forEach(type =>
 if no id found,
 ჩემი ნაწერი არ მოიძებნა
 */
-const dispute = function(type) {
-        clearElements()
-        document.getElementById(`dispute${type}`).innerHTML = disputeInput(type)
-    }
-    // in admin panel: request confirmation button
-const sendDispute = function(type) {
+const dispute = function (type) {
+    clearElements()
+    document.getElementById(`dispute${type}`).innerHTML = disputeInput(type)
+}
+// in admin panel: request confirmation button
+const sendDispute = function (exam, task) {
     const info = document.querySelector('textarea').value
-    if (info.length > 0)
-        postData(`${url}/${studentId}/new`, { info: info, type: type })
-        .then(res => res.disputes.filter(e => e.status == 'unresolved'))
-        .then(elem => addDisputeElement(elem))
-        .then(clearElements)
-        .catch(err => console.log(err))
+    if (info.length > 0) {
+        api.createDispute({
+            info: info,
+            subject: subject,
+            exam: exam,
+            task: task
+        })
+        .then(res => updateDisputes(res.disputes))
+    }
+
 
 }

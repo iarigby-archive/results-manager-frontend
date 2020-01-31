@@ -2,10 +2,26 @@
 let data = {}
 // got tired of passing them around, needs bigger refactor
 const studentId = getParameter("id")
-const subject = getParameter("subject")
+const subject = getParameter("subject") || "paradigms"
+
 const api = new Api(subject, studentId)
-function updateData(api) {
+
+function updateStudentData(res) {
+    document.getElementById('student-id').innerHTML = res.emailId
+    return res
+}
+
+function updateSubjectName(res) {
+    document.getElementById('results-list-header').innerHTML = 
+        `${res.name_ge}ს გამოცდები`
+    return res
+}
+function updateData(api) {    
+    api.getDisputes()
+        .then(res => updateStudentData(res))
+        .then(res => updateDisputes(res.disputes))
     api.getSubjectExams()
+        .then(res => updateSubjectName(res))
         .then(res => res.exams)
         .then(exams => setUpExams(exams, api))
 }
@@ -16,7 +32,6 @@ function main() {
             test()
         else
             updateData(api)
-        // .then(updateDisputes)
     } else {
         if (subject) {
             // display help message for id
